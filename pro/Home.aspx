@@ -10,10 +10,16 @@
     <form id="form1" runat="server">
         <div>
             <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:dbconnect %>" SelectCommand="SELECT * FROM [VendorDetails]"></asp:SqlDataSource>
-            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="3" DataSourceID="SqlDataSource1" ForeColor="Black" GridLines="Vertical" DataKeyNames="SI" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px">
+            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="3" DataSourceID="SqlDataSource1" ForeColor="Black" GridLines="Vertical" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" >
                 <AlternatingRowStyle BackColor="#CCCCCC" />
                 <Columns>
-                    <asp:BoundField DataField="SI" HeaderText="SI" SortExpression="SI" ReadOnly="True" />
+                    <asp:BoundField DataField="Acount_Code_of_Assests" HeaderText="Acount_Code_of_Assests" SortExpression="Acount_Code_of_Assests" />
+                    <asp:BoundField DataField="Account_Code_of_Name_of_Assests" HeaderText="Account_Code_of_Name_of_Assests" SortExpression="Account_Code_of_Name_of_Assests" />
+                    <asp:BoundField DataField="Account_code_AD_upto_31_03_2015" HeaderText="Account_code_AD_upto_31_03_2015" SortExpression="Account_code_AD_upto_31_03_2015" />
+                    <asp:BoundField DataField="Name_of_Account_code_AD_upto_31_03_2015" HeaderText="Name_of_Account_code_AD_upto_31_03_2015" SortExpression="Name_of_Account_code_AD_upto_31_03_2015" />
+                    <asp:BoundField DataField="Account_code_AD_from_1_04_2015" HeaderText="Account_code_AD_from_1_04_2015" SortExpression="Account_code_AD_from_1_04_2015" />
+                    <asp:BoundField DataField="Name_of_Account_code_AD_from_1_04_2015" HeaderText="Name_of_Account_code_AD_from_1_04_2015" SortExpression="Name_of_Account_code_AD_from_1_04_2015" />
+                    <asp:BoundField DataField="SI" HeaderText="SI" SortExpression="SI" />
                     <asp:BoundField DataField="Page" HeaderText="Page" SortExpression="Page" />
                     <asp:BoundField DataField="VR" HeaderText="VR" SortExpression="VR" />
                     <asp:BoundField DataField="Particulars" HeaderText="Particulars" SortExpression="Particulars" />
@@ -34,6 +40,10 @@
                     <asp:BoundField DataField="Depreciation_adjusted_in_the_year" HeaderText="Depreciation_adjusted_in_the_year" SortExpression="Depreciation_adjusted_in_the_year" />
                     <asp:BoundField DataField="Cumulative_depreciation_as_on" HeaderText="Cumulative_depreciation_as_on" SortExpression="Cumulative_depreciation_as_on" />
                     <asp:BoundField DataField="Net_Block_in_year" HeaderText="Net_Block_in_year" SortExpression="Net_Block_in_year" />
+                    <asp:BoundField DataField="Remaining_Life" HeaderText="Remaining_Life" SortExpression="Remaining_Life" />
+                    <asp:BoundField DataField="New_life_in_months" HeaderText="New_life_in_months" SortExpression="New_life_in_months" />
+                    <asp:BoundField DataField="Months_used" HeaderText="Months_used" SortExpression="Months_used" />
+                    <asp:BoundField DataField="Dep_new_15_16" HeaderText="Dep_new_15_16" SortExpression="Dep_new_15_16" />
                 </Columns>
                 <FooterStyle BackColor="#CCCCCC" />
                 <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
@@ -44,11 +54,12 @@
                 <SortedDescendingCellStyle BackColor="#CAC9C9" />
                 <SortedDescendingHeaderStyle BackColor="#383838" />
             </asp:GridView>
+
             <br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Click to Insert New Data to the Database" Width="2954px" BackColor="#99FF99" Font-Bold="True" Font-Italic="False" Font-Names="Broadway" Font-Overline="False" Font-Size="Larger" Font-Underline="True" ForeColor="#990000" Height="37px" style="margin-top: 0px" />
+            <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Click to Insert New Data to the Database" Width="2041px" BackColor="#99FF99" Font-Bold="True" Font-Italic="False" Font-Names="Broadway" Font-Overline="False" Font-Size="Larger" Font-Underline="True" ForeColor="#990000" Height="37px" style="margin-top: 0px" />
         </div>
     </form>
 </body>

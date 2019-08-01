@@ -23,7 +23,13 @@ namespace pro
             {
                 
                 SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\hp\source\repos\pro\pro\App_Data\Database1.mdf;Integrated Security=True");
-                SqlCommand cmd = new SqlCommand("insert into VendorDetails"+ "(SI,Page,VR,Particulars,Party_Name,Bill_No,Bill_Date,Qty,Original_Value,AdditionsDeletions_during_year,Sale_of_Asset,Month,Assets_transferred_fromto_other_Divn,Closing_Value,Cumulative_Depreciation,Depreciation_transferred_fromto_other_divns,Assets_whose_WDV_is_eqless_than_Rs_10000_in_year) values (@SI,@Page,@VR,@Particulars,@Party_Name,@Bill_No,@Bill_Date,@Qty,@Original_Value,@AdditionsDeletions_during_year,@Sale_of_Asset,@Month,@Assets_transferred_fromto_other_Divn,@Closing_Value,@Cumulative_Depreciation,@Depreciation_transferred_fromto_other_divns,@Assets_whose_WDV_is_eqless_than_Rs_10000_in_year)", conn);
+                SqlCommand cmd = new SqlCommand("insert into VendorDetails"+ "(Acount_Code_of_Assests,Account_Code_of_Name_of_Assests,Account_code_AD_upto_31_03_2015,Name_of_Account_code_AD_upto_31_03_2015,Account_code_AD_from_1_04_2015,Name_of_Account_code_AD_from_1_04_2015,SI,Page,VR,Particulars,Party_Name,Bill_No,Bill_Date,Qty,Original_Value,AdditionsDeletions_during_year,Sale_of_Asset,Month,Assets_transferred_fromto_other_Divn,Closing_Value,Cumulative_Depreciation,Depreciation_transferred_fromto_other_divns,Assets_whose_WDV_is_eqless_than_Rs_10000_in_year,Remaining_Life,Depreciation_adjusted_in_the_year,Cumulative_depreciation_as_on,Net_Block_in_year,New_life_in_months,Months_used,Dep_new_15_16) values (@Acount_Code_of_Assests,@Account_Code_of_Name_of_Assests,@Account_code_AD_upto_31_03_2015,@Name_of_Account_code_AD_upto_31_03_2015,@Account_code_AD_from_1_04_2015,@Name_of_Account_code_AD_from_1_04_2015,@SI,@Page,@VR,@Particulars,@Party_Name,@Bill_No,@Bill_Date,@Qty,@Original_Value,@AdditionsDeletions_during_year,@Sale_of_Asset,@Month,@Assets_transferred_fromto_other_Divn,@Closing_Value,@Cumulative_Depreciation,@Depreciation_transferred_fromto_other_divns,@Assets_whose_WDV_is_eqless_than_Rs_10000_in_year,@Remaining_Life,@Depreciation_adjusted_in_the_year,@Cumulative_depreciation_as_on,@Net_Block_in_year,@New_life_in_months,@Months_used,@Dep_new_15_16)", conn);
+                cmd.Parameters.AddWithValue("Acount_Code_of_Assests", TextBox23.Text);
+                cmd.Parameters.AddWithValue("Account_Code_of_Name_of_Assests", TextBox24.Text);
+                cmd.Parameters.AddWithValue("Account_code_AD_upto_31_03_2015", TextBox25.Text);
+                cmd.Parameters.AddWithValue("Name_of_Account_code_AD_upto_31_03_2015", TextBox26.Text);
+                cmd.Parameters.AddWithValue("Account_code_AD_from_1_04_2015", TextBox27.Text);
+                cmd.Parameters.AddWithValue("Name_of_Account_code_AD_from_1_04_2015", TextBox28.Text);
                 cmd.Parameters.AddWithValue("SI", TextBox1.Text);
                 cmd.Parameters.AddWithValue("Page", TextBox4.Text);
                 cmd.Parameters.AddWithValue("VR", TextBox5.Text);
@@ -39,25 +45,31 @@ namespace pro
                 cmd.Parameters.AddWithValue("Assets_transferred_fromto_other_Divn", TextBox15.Text);
                 cmd.Parameters.AddWithValue("Closing_Value", TextBox17.Text);
                 cmd.Parameters.AddWithValue("Cumulative_Depreciation", TextBox18.Text);
+                cmd.Parameters.AddWithValue("Depreciation_during_year", TextBox19.Text);
                 cmd.Parameters.AddWithValue("Assets_whose_WDV_is_eqless_than_Rs_10000_in_year", TextBox20.Text);
                 cmd.Parameters.AddWithValue("Depreciation_transferred_fromto_other_divns", TextBox21.Text);
+                cmd.Parameters.AddWithValue("Remaining_Life", TextBox22.Text);
+                cmd.Parameters.AddWithValue("Depreciation_adjusted_in_the_year", TextBox29.Text);
+                cmd.Parameters.AddWithValue("Cumulative_depreciation_as_on", TextBox30.Text);
+                cmd.Parameters.AddWithValue("Net_Block_in_year", TextBox31.Text);
+                cmd.Parameters.AddWithValue("New_life_in_months", TextBox32.Text);
+                cmd.Parameters.AddWithValue("Months_used", TextBox33.Text);
+                cmd.Parameters.AddWithValue("Dep_new_15_16", TextBox34.Text);
                 conn.Open();
                 cmd.ExecuteNonQuery();
-                //SqlCommand smde = new SqlCommand("select sum(Original_Value+AdditionsDeletions_during_year) as Closing_Value from VendorDetails", conn);
                 conn.Close();
                 Response.Redirect("Home.aspx");
             }
             catch(Exception ex)
             {
-                Response.Write("Error in the inserted data: \n 1)Check the date format it should be yyyy-mm-dd \n 2)SR no. should be unique and not be repeated \n 3)any other error Refer from below.\n\n\n\n\n"+ex);
+                Response.Write("Error in the inserted data:" + ex);
             }
         }
 
         protected void TextBox15_TextChanged(object sender, EventArgs e)
         {
             TextBox17.Text = (float.Parse(TextBox11.Text) + float.Parse(TextBox12.Text) + float.Parse(TextBox15.Text)).ToString();
-            TextBox18.Text = (float.Parse(TextBox11.Text) + float.Parse(TextBox12.Text) + float.Parse(TextBox15.Text)).ToString();
-
+            
         }
 
         protected void TextBox11_TextChanged(object sender, EventArgs e)
@@ -73,16 +85,7 @@ namespace pro
 
         protected void TextBox18_TextChanged(object sender, EventArgs e)
         {
-            float a = (float.Parse(TextBox11.Text) - float.Parse(TextBox18.Text)) / float.Parse(TextBox10.Text);
-            if (a <= 10000)
-            {
-                TextBox20.Text = (float.Parse(TextBox11.Text) - float.Parse(TextBox10.Text)).ToString();
-
-            }
-            else
-            {
-                TextBox20.Text = "0";
-            }
+        
         }
 
         protected void TextBox10_TextChanged(object sender, EventArgs e)
@@ -96,7 +99,7 @@ namespace pro
             float a = (float.Parse(TextBox11.Text) - float.Parse(TextBox18.Text)) / float.Parse(TextBox10.Text);
             if (a <= 10000)
             {
-                TextBox20.Text = (float.Parse(TextBox11.Text) - float.Parse(TextBox10.Text)).ToString();
+                TextBox20.Text = (float.Parse(TextBox11.Text) - float.Parse(TextBox18.Text)).ToString();
 
             }
             else
@@ -133,6 +136,49 @@ namespace pro
         protected void Button2_Click(object sender, EventArgs e)
         {
             Response.Redirect("Home.aspx");
+        }
+
+        protected void TextBox33_TextChanged(object sender, EventArgs e)
+        {
+            TextBox22.Text = (int.Parse(TextBox32.Text) - int.Parse(TextBox33.Text)).ToString();
+        }
+
+        protected void TextBox29_TextChanged(object sender, EventArgs e)
+        {
+            TextBox30.Text = (float.Parse(TextBox19.Text) + float.Parse(TextBox20.Text)+ float.Parse(TextBox21.Text) + float.Parse(TextBox29.Text)).ToString();
+        }
+
+        protected void TextBox30_TextChanged(object sender, EventArgs e)
+        {
+            TextBox31.Text = (float.Parse(TextBox17.Text) - float.Parse(TextBox30.Text)).ToString();
+        }
+
+        protected void CheckBox5_CheckedChanged(object sender, EventArgs e)
+        {
+            TextBox22.Text = (int.Parse(TextBox32.Text) - int.Parse(TextBox33.Text)).ToString();
+        }
+
+        protected void CheckBox3_CheckedChanged(object sender, EventArgs e)
+        {
+            TextBox30.Text = (float.Parse(TextBox19.Text) + float.Parse(TextBox20.Text) + float.Parse(TextBox21.Text) + float.Parse(TextBox29.Text)).ToString();
+        }
+
+        protected void CheckBox4_CheckedChanged(object sender, EventArgs e)
+        {
+            TextBox31.Text = (float.Parse(TextBox17.Text) - float.Parse(TextBox30.Text)).ToString();
+        }
+
+        protected void Button3_Click(object sender, EventArgs e)
+        {
+            //update record
+            Response.Redirect("WebForm3.aspx");
+        }
+
+        protected void Button4_Click(object sender, EventArgs e)
+        {
+            //delete 
+            Response.Redirect("WebForm2.aspx");
+            
         }
     }
 }
