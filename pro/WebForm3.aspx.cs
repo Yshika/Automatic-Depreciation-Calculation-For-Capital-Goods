@@ -24,7 +24,7 @@ namespace pro
                 SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\hp\source\repos\pro\pro\App_Data\Database1.mdf;Integrated Security=True");
                 conn.Open();
                 SqlCommand cmd = new SqlCommand();
-                cmd.CommandText = "update from VendorDetails SET Closing_Value='" + TextBox19.Text + "' where Acount_Code_of_Assests='" + TextBox17.Text + "' and Account_Code_of_Name_of_Assests='" + TextBox18.Text + "'";
+                cmd.CommandText = "update VendorDetails SET Closing_Value='" + TextBox19.Text + "' where Acount_Code_of_Assests='" + TextBox17.Text + "' and Account_Code_of_Name_of_Assests='" + TextBox18.Text + "'";
                 cmd.Connection = conn;
                 cmd.ExecuteNonQuery();
                 conn.Close();
